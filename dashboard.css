@@ -322,7 +322,7 @@ body, html {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .update-item:last-child {
@@ -383,15 +383,16 @@ body, html {
 
 .bus-tags {
     display: flex;
-    gap: 10px;
+    gap: 8px;
+    flex-wrap: wrap;
     margin-top: 5px;
 }
 
 .bus-tag {
     background-color: black;
     color: white;
-    padding: 5px 10px;
-    border-radius: 15px;
+    padding: 5px 12px;
+    border-radius: 20px;
     font-size: 0.9em;
     font-weight: bold;
 }
@@ -667,4 +668,73 @@ input:checked + .slider:before {
   .status-tag.delayed   { background-color: orange; }
   .status-tag.ontime    { background-color: green; }
   .status-tag.cancelled { background-color: red; }
-  
+
+/* Update Dashboard Styling */
+.update-list {
+    list-style: none;
+    padding: 0;
+}
+
+.update-item {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px 0;
+}
+
+.incident-tag {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.incident-tag.bus-breakdown {
+    background-color: #ff4444;
+    color: white;
+}
+
+.incident-tag.closure {
+    background-color: #ff0000;
+    color: white;
+}
+
+.incident-tag.crash {
+    background-color: #ff8c00;
+    color: white;
+}
+
+.incident-tag.work {
+    background-color: #808080;
+    color: white;
+}
+
+.bus-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.bus-tag {
+    background-color: #000;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.incident-title {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.incident-meta {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.time-ago {
+    font-size: 0.9em;
+    color: #666;
+}

@@ -18,20 +18,20 @@
             <img src="routifysquarelogonew.jpg" alt="Logo" class="img-fluid" />
         </div>
         <h3 class="fw-bold mb-4">Login</h3>
-        <form id="login-form" action="dashboard.html">
+        <form id="login-form">
             <div class="mb-3 input-group">
                 <span class="input-group-text">
                     <i class="fas fa-user"></i>
                 </span>
-                <input type="text" class="form-control" placeholder="Username">
+                <input type="text" class="form-control" placeholder="Email" required>
             </div>
             <div class="mb-4 input-group">
                 <span class="input-group-text">
                     <i class="fas fa-lock"></i>
                 </span>
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" placeholder="Password" required>
             </div>
-            <button type="button" class="btn btn-dark btn-block w-100" onclick="window.location.href='dashboard.html'">Login</button>
+            <button type="submit" class="btn btn-dark btn-block w-100">Login</button>
         </form>
         <div class="mt-4">
             <p class="signup-text">Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
