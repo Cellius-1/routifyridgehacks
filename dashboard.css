@@ -285,7 +285,7 @@ body, html {
 }
 
 .bus-status-table .status-cancelled {
-    background-color: gray;
+    background-color: red;
     padding: 1px 5px;
     font-size: 15px;
     font-weight: bold;
