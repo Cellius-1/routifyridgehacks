@@ -640,3 +640,31 @@ input:checked + .slider:before {
 .refresh-btn.animate i {
     animation: spin 1s linear infinite;
 }
+
+/* ----------------------------------- */
+/* Driver tags (same style as bus-tag) */
+.driver-tag {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+  
+  /* Status tags (mimic .update-type pills) */
+  .status-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #fff;
+  }
+  .status-tag.delayed   { background-color: orange; }
+  .status-tag.ontime    { background-color: green; }
+  .status-tag.cancelled { background-color: red; }
+  

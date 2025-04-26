@@ -20,10 +20,10 @@
           <span class="username">User</span>
           <span class="dropdown-arrow ms-1">&#9662;</span>
           <div class="profile-dropdown">
-            <a href="#">Profile</a>
+            <a href="https://students.c2.genesisedu.net/bernardsboe/sis/view?gohome=true">Profile</a>
             <!-- Now goes to our new settings page -->
             <a href="settings.html">Settings</a>
-            <a href="#">Logout</a>
+            <a href="login.html">Logout</a>
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@
         <!-- Thulasi’s card (onclick now passes her coords) -->
         <div class="child-card p-3 mb-3 d-flex justify-content-between align-items-center">
             <div class="child-info d-flex align-items-center">
-                <img src="thulasi.png" alt="Profile Picture" class="profile-pic me-3">
+                <img src="tharun.png" alt="Profile Picture" class="profile-pic me-3">
                 <div>
                     <div class="child-name">Thulasi N.</div>
                     <div class="bus-info">V09</div>
@@ -68,79 +68,145 @@
 
     <div class="container">
         <div class="bus-status-header">
-            <div class="form-select-container">
-                <label for="school-select"><strong>School:</strong></label>
-                <select id="school-select" class="form-select form-select-sm" onchange="showDashboard()">
-                    <option value="vanholten"selected>Van Holten Primary School</option>
-                    <option value="milltown">Milltown Primary School</option>                
-                </select>
-            </div>
-            
+          <div class="form-select-container">
+            <label for="school-select"><strong>School:</strong></label>
+            <select id="school-select" class="form-select form-select-sm" onchange="showDashboard()">
+              <option value="vanholten" selected>Van Holten Primary School</option>
+              <option value="milltown">Milltown Primary School</option>
+            </select>
+          </div>
         </div>
+      
+        <!-- Van Holten Table -->
         <table id="vanholten" class="bus-status-table mt-2">
-            <thead>
-                <tr>
-                    <th>Bus Number</th>
-                    <th>Status</th>
-                    <th>View Map</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>V01</td>
-                    <td class="status-delayed">DELAYED - 5 MIN</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>V02</td>
-                    <td class="status-ontime">ON TIME</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>V03</td>
-                    <td class="status-delayed">DELAYED - 3 MIN</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>V04</td>
-                    <td class="status-ontime">ON TIME</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-            </tbody>
+          <thead>
+            <tr>
+              <th>Bus Number</th>
+              <th>Status</th>
+              <th>Driver</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>V01</td>
+              <td><span class="status-tag delayed">DELAYED - 5 MIN</span></td>
+              <td><span class="driver-tag">Mr. José García</span></td>
+            </tr>
+            <tr>
+              <td>V02</td>
+              <td><span class="status-tag cancelled">CANCELLED</span></td>
+              <td><span class="driver-tag">Ms. Latoya Johnson</span></td>
+            </tr>
+            <tr>
+              <td>V03</td>
+              <td><span class="status-tag delayed">DELAYED - 3 MIN</span></td>
+              <td><span class="driver-tag">Mr. Carlos Hernández</span></td>
+            </tr>
+            <tr>
+              <td>V04</td>
+              <td><span class="status-tag ontime">ON TIME</span></td>
+              <td><span class="driver-tag">Ms. Angela Davis</span></td>
+            </tr>
+          </tbody>
         </table>
+      
+        <!-- Milltown Table -->
         <table id="milltown" class="bus-status-table mt-2">
-            <thead>
-                <tr>
-                    <th>Bus Number</th>
-                    <th>Status</th>
-                    <th>View Map</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>M01</td>
-                    <td class="status-cancelled">CANCELLED</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>M02</td>
-                    <td class="status-delayed">DELAYED - 20 MIN</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>M03</td>
-                    <td class="status-cancelled">CANCELLED</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>M04</td>
-                    <td class="status-ontime">ON TIME</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-            </tbody>
+          <thead>
+            <tr>
+              <th>Bus Number</th>
+              <th>Status</th>
+              <th>Driver</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>M01</td>
+              <td><span class="status-tag cancelled">CANCELLED</span></td>
+              <td><span class="driver-tag">Mr. Kwame Mensah</span></td>
+            </tr>
+            <tr>
+              <td>M02</td>
+              <td><span class="status-tag delayed">DELAYED - 20 MIN</span></td>
+              <td><span class="driver-tag">Ms. Amina Abdi</span></td>
+            </tr>
+            <tr>
+              <td>M03</td>
+              <td><span class="status-tag cancelled">CANCELLED</span></td>
+              <td><span class="driver-tag">Mr. Darnell Jackson</span></td>
+            </tr>
+            <tr>                                                                                                        
+              <td>M04</td>
+              <td><span class="status-tag ontime">ON TIME</span></td>
+              <td><span class="driver-tag">Mrs. Nyasha Chikomo</span></td>
+            </tr>
+          </tbody>
         </table>
-    </div>
-
+      
+        <!-- Eisenhower Table -->
+        <table id="eisenhower" class="bus-status-table mt-2">
+          <thead>
+            <tr>
+              <th>Bus Number</th>
+              <th>Status</th>
+              <th>Driver</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>E01</td>
+              <td><span class="status-tag ontime">ON TIME</span></td>
+              <td><span class="driver-tag">Mr. Diego Martínez</span></td>
+            </tr>
+            <tr>
+              <td>E02</td>
+              <td><span class="status-tag ontime">ON TIME</span></td>
+              <td><span class="driver-tag">Ms. Tasha Brown</span></td>
+            </tr>
+            <tr>
+              <td>E03</td>
+              <td><span class="status-tag ontime">ON TIME</span></td>
+              <td><span class="driver-tag">Mr. Rafael Torres</span></td>
+            </tr>
+            <tr>
+              <td>E04</td>
+              <td><span class="status-tag cancelled">CANCELLED</span></td>
+              <td><span class="driver-tag">Ms. Carmen Díaz</span></td>
+            </tr>
+            <tr>
+              <td>E05</td>
+              <td><span class="status-tag delayed">DELAYED - 2 MIN</span></td>
+              <td><span class="driver-tag">Mr. Kofi Adu</span></td>
+            </tr>
+            <tr>
+              <td>E06</td>
+              <td><span class="status-tag ontime">ON TIME</span></td>
+              <td><span class="driver-tag">Ms. Zuri Ndlovu</span></td>
+            </tr>
+            <tr>
+              <td>E07</td>
+              <td><span class="status-tag cancelled">CANCELLED</span></td>
+              <td><span class="driver-tag">Mr. Marcus Green</span></td>
+            </tr>
+            <tr>
+              <td>E08</td>
+              <td><span class="status-tag ontime">ON TIME</span></td>
+              <td><span class="driver-tag">Ms. Fatima Diallo</span></td>
+            </tr>
+            <tr>
+              <td>E09</td>
+              <td><span class="status-tag delayed">DELAYED - 5 MIN</span></td>
+              <td><span class="driver-tag">Mr. Samuel Nkosi</span></td>
+            </tr>
+            <tr>
+              <td>E10</td>
+              <td><span class="status-tag delayed">DELAYED - 10 MIN</span></td>
+              <td><span class="driver-tag">Mrs. Estela Morales</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
     <div class="toggle-container d-flex align-items-center">
         <button class="toggle-btn" onclick="toggleDashboard()">
             <span class="toggle-arrow">&#9662;</span>
@@ -206,34 +272,8 @@
         </ul>
     </div>
 
-    <div class="notification-settings mt-3 p-3">
-        <h3><strong>Notification Settings</strong></h3>
-        <div class="notification-toggle">
-            <i class="fas fa-bell"></i>
-            <label class="switch">
-                <input type="checkbox" id="notification-toggle">
-                <span class="slider round"></span>
-            </label>
-            <span id="notification-status">Notifications: <strong>Off</strong></span>
-        </div>
-        <div class="notification-options mt-2">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="arrival-home">
-                <label class="form-check-label" for="arrival-home">Notify when student arrives home</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="reaches-school">
-                <label class="form-check-label" for="reaches-school">Notify when student reaches school</label>
-            </div>
-        </div>
-    </div>
 
-    
 
-    <div id="notification-popup" class="notification-popup">
-        <i class="fas fa-exclamation-circle"></i>
-        Notifications enabled!
-    </div>
 <div class="refresh-container">
     <button class="refresh-btn">
         <i class="fas fa-sync-alt"></i> Refresh
@@ -332,32 +372,6 @@
             });
         });
     </script>    
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const status = document.getElementById('notification-status');
-    const toggle = document.getElementById('notification-toggle');
-    const popup = document.getElementById('notification-popup');
-
-    status.innerHTML = 'Notifications: <strong>Off</strong>';
-    popup.style.display = 'none'; 
-    toggle.addEventListener('change', function () {
-        if (this.checked) {
-            status.innerHTML = 'Notifications: <strong>On</strong>';
-            showPopup();
-        } else {
-            status.innerHTML = 'Notifications: <strong>Off</strong>';
-        }
-    });
-
-    function showPopup() {
-        popup.style.display = 'block';
-        setTimeout(() => {
-            popup.style.display = 'none';
-        }, 3000); 
-    }
-});
-
-</script>
 <script>
     function refreshPage() {
     const btn = document.querySelector('.refresh-btn');
