@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Navigation between forms
     document.getElementById('show-signup').addEventListener('click', () => {
         document.getElementById('login-container').classList.add('d-none');
         document.getElementById('signup-container-step1').classList.remove('d-none');
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('login-container').classList.remove('d-none');
     });
 
+    // District code validation
     const districtCodeInput = document.getElementById('district-code');
     const nextStepButton = document.getElementById('next-step');
 
@@ -25,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Parent/Student selection
     document.getElementById('parent-button').addEventListener('click', () => {
         document.getElementById('signup-container-step2').classList.add('d-none');
         document.getElementById('signup-container-parent').classList.remove('d-none');
@@ -35,7 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('signup-container-student').classList.remove('d-none');
     });
 
+    // Parent form validation
     const parentForm = document.getElementById('parent-form');
+
+    // Auto-uppercase for parent code
+    document.getElementById('parent-code-reg').addEventListener('input', function() {
+        this.value = this.value.toUpperCase();
+    });
 
     parentForm.addEventListener('input', (event) => {
         const target = event.target;
@@ -47,22 +56,31 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('signup-container-parent').classList.add('d-none');
             document.getElementById('verification-container').classList.remove('d-none');
             
-            // Simulate verification process (2 seconds)
+            // Simulate verification process
             setTimeout(() => {
                 document.getElementById('verification-complete').classList.remove('d-none');
             }, 2000);
         }
     });
 
+    // Continue to dashboard
     document.getElementById('continue-to-dashboard').addEventListener('click', () => {
         window.location.href = 'dashboard.html';
     });
 
+    // Form validation functions
     function validateParentFormInput(input) {
         const errorMessage = input.nextElementSibling;
         let isValid = true;
 
-        if (input.id === 'confirm-password') {
+        if (input.id === 'parent-code-reg') {
+            if (input.value.length !== 8) {
+                isValid = false;
+                errorMessage.textContent = 'Parent code must be 8 digits.';
+            } else {
+                errorMessage.textContent = '';
+            }
+        } else if (input.id === 'confirm-password') {
             const password = document.getElementById('password').value;
             if (input.value !== password) {
                 isValid = false;
@@ -103,10 +121,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function validateParentForm() {
-        const inputs = parentForm.querySelectorAll('input');
+        const requiredFields = [
+            'parent-code-reg', 'first-name', 'last-name', 
+            'username', 'password', 'confirm-password', 
+            'email', 'phone'
+        ];
         let isValid = true;
 
-        inputs.forEach((input) => {
+        requiredFields.forEach(fieldId => {
+            const input = document.getElementById(fieldId);
             validateParentFormInput(input);
             if (input.classList.contains('error')) {
                 isValid = false;
@@ -116,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return isValid;
     }
 
+    // Student registration
     const parentCodeInput = document.getElementById('parent-code');
     const nextStepStudentButton = document.getElementById('next-step-student');
 
@@ -134,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Back buttons
     document.getElementById('go-back-step2').addEventListener('click', () => {
         document.getElementById('signup-container-parent').classList.add('d-none');
         document.getElementById('signup-container-step2').classList.remove('d-none');
@@ -144,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('signup-container-step2').classList.remove('d-none');
     });
 
+    // Add child flow
     document.getElementById('add-child').addEventListener('click', () => {
         document.getElementById('welcome-screen').classList.add('d-none');
         document.getElementById('add-child-screen').classList.remove('d-none');
