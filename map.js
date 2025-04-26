@@ -59,10 +59,6 @@ function moveBus() {
   map.panTo(routeCoordinates[currentIndex]);
 }
 
-/**
- * showDashboard-style toggle for each child-card.
- * startLat/startLng default to Tharun’s home if not passed.
- */
 function toggleMap(mapId, driverId, startLat = 40.585417, startLng = -74.632778) {
   const mapContainer = document.getElementById(mapId);
   const driverCard   = document.getElementById(driverId);
@@ -71,7 +67,6 @@ function toggleMap(mapId, driverId, startLat = 40.585417, startLng = -74.632778)
     mapContainer.style.display = "block";
     driverCard.style.display   = "block";
 
-    // initialize fresh map
     map = L.map(mapId).setView([startLat, startLng], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
@@ -83,16 +78,12 @@ function toggleMap(mapId, driverId, startLat = 40.585417, startLng = -74.632778)
       iconAnchor: [16, 37],
     });
 
-    // put marker at your start coords
     busMarker = L.marker([startLat, startLng], { icon: busIcon }).addTo(map);
 
-    // draw the same route
     L.polyline(routeCoordinates, { color: 'blue' }).addTo(map);
 
-    // animate it
     intervalId = setInterval(moveBus, 1500);
 
-    // show driver info; if you want Thulasi’s name here, you could detect driverId==='driver2'
     const name = driverId === 'driver2' ? 'Thulasi N.' : 'Tharun N.';
     driverCard.innerHTML = `
       <div class="driver-card card mt-3">
@@ -105,7 +96,6 @@ function toggleMap(mapId, driverId, startLat = 40.585417, startLng = -74.632778)
         </div>
       </div>`;
   } else {
-    // hide and clean up
     mapContainer.style.display = "none";
     driverCard.style.display   = "none";
     if (intervalId) {
