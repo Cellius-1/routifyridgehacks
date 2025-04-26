@@ -36,3 +36,8 @@ function showDashboard() {
         eisenhowerTable.style.display = 'table';  
 }
 }
+
+function toggleDropdown() {
+    const profileInfo = document.querySelector('.profile-info');
+    profileInfo.classList.toggle('active');
+  }

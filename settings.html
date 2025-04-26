@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings – Bus Tracker</title>
+  <!-- reuse your existing styles -->
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+<body>
+  <!-- Same topbar for consistency -->
+  <div class="dashboard-topbar d-flex align-items-center p-3">
+    <img src="brlogo.jpg" alt="BR Logo" style="width:40px;height:40px;border-radius:50%;margin-right:10px;">
+    <span class="district-name" style="font-size:1.2em;">Bridgewater-Raritan Regional School District</span>
+    <div class="profile-info ms-auto d-flex align-items-center" onclick="toggleDropdown()">
+      <img src="appa.png" alt="Profile Picture" class="me-2">
+      <span class="username">User</span>
+      <span class="dropdown-arrow ms-1">&#9662;</span>
+      <div class="profile-dropdown">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="settings.html">Settings</a>
+        <a href="login.html">Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-4 mb-5">
+    <h2>Settings</h2>
+    <hr>
+
+    <!-- Account -->
+    <section class="mb-4">
+      <h4>Account</h4>
+      <form>
+        <div class="mb-3">
+          <label for="displayName" class="form-label">Display Name</label>
+          <input type="text" id="displayName" class="form-control" value="User">
+        </div>
+        <div class="mb-3">
+          <label for="emailAddress" class="form-label">Email Address</label>
+          <input type="email" id="emailAddress" class="form-control" value="user@example.com">
+        </div>
+        <button type="submit" class="btn btn-primary">Save Account</button>
+      </form>
+    </section>
+
+    <!-- Password -->
+    <section class="mb-4">
+      <h4>Change Password</h4>
+      <form>
+        <div class="mb-3">
+          <label for="currentPwd" class="form-label">Current Password</label>
+          <input type="password" id="currentPwd" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="newPwd" class="form-label">New Password</label>
+          <input type="password" id="newPwd" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="confirmPwd" class="form-label">Confirm New Password</label>
+          <input type="password" id="confirmPwd" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Update Password</button>
+      </form>
+    </section>
+
+    <!-- Notifications -->
+    <section class="mb-4">
+      <h4>Notifications</h4>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" id="notifyDelay" checked>
+        <label class="form-check-label" for="notifyDelay">
+          Notify me of bus delays
+        </label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" id="notifyCancel">
+        <label class="form-check-label" for="notifyCancel">
+          Notify me of cancellations
+        </label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" id="notifyArrival">
+        <label class="form-check-label" for="notifyArrival">
+          Notify when student arrives home
+        </label>
+      </div>
+      <button class="btn btn-primary mt-2">Save Notification Settings</button>
+    </section>
+
+    <!-- Privacy -->
+    <section class="mb-4">
+      <h4>Privacy</h4>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="shareLocation">
+        <label class="form-check-label" for="shareLocation">
+          Share my live location with drivers
+        </label>
+      </div>
+    </section>
+  </div>
+
+  <!-- your existing scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

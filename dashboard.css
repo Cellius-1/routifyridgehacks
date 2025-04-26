@@ -242,7 +242,7 @@ body, html {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     border-radius: 10px 10px 0 0; 
     text-align: center; 
 }
@@ -254,14 +254,14 @@ body, html {
 .bus-status-table {
     width: 100%; 
     border-collapse: collapse;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     border-radius: 0 0 10px 10px; 
 }
 
 .bus-status-table th, .bus-status-table td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ffffff;
 }
 
 .bus-status-table .status-delayed {
@@ -322,7 +322,7 @@ body, html {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ffffff;
 }
 
 .update-item:last-child {
@@ -421,7 +421,7 @@ body, html {
 }
 
 .toggle-btn:hover {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     color: #000;
 }
 
@@ -502,7 +502,7 @@ body, html {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #ffffff;
     transition: .4s;
     border-radius: 24px;
 }
