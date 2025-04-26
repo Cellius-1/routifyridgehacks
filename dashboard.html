@@ -21,7 +21,6 @@
           <span class="dropdown-arrow ms-1">&#9662;</span>
           <div class="profile-dropdown">
             <a href="https://students.c2.genesisedu.net/bernardsboe/sis/view?gohome=true">Profile</a>
-            <!-- Now goes to our new settings page -->
             <a href="settings.html">Settings</a>
             <a href="login.html">Logout</a>
           </div>
@@ -29,7 +28,6 @@
       </div>
 
     <div class="container mt-3">
-        <!-- Student cards will be populated dynamically -->
     </div>
     <div class="container">
         <div class="bus-status-header">
@@ -42,7 +40,7 @@
           </div>
         </div>
 
-        <!-- Van Holten Table -->
+        
         <table id="vanholten" class="bus-status-table mt-2">
           <thead>
             <tr>
@@ -74,8 +72,6 @@
             </tr>
           </tbody>
         </table>
-
-        <!-- Milltown Table -->
      
       </div>
 
@@ -95,7 +91,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Bus data will be populated dynamically -->
             </tbody>
         </table>
     </div>
@@ -110,7 +105,6 @@
     <div id="update-dashboard" class="update-dashboard">
         <h3>Update Dashboard</h3>
         <ul class="update-list">
-            <!-- Incidents will be populated dynamically -->
         </ul>
     </div>
 
@@ -238,8 +232,7 @@
                 driverCard.style.display = "block";
 
                 if (!map) {
-                    map = L.map(mapId).setView([40.585417, -74.632778], 15); // Center near Miltown Elementary
-
+                    map = L.map(mapId).setView([40.585417, -74.632778], 15); 
                     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     }).addTo(map);
