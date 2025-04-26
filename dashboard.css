@@ -321,9 +321,9 @@ body, html {
 .update-item {
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    border-bottom: 1px solid #e0e0e0;
-}
+    align-items: flex-start;
+  }
+  
 
 .update-item:last-child {
     border-bottom: none;
@@ -680,23 +680,29 @@ input:checked + .slider:before {
     padding: 15px 0;
 }
 
-.incident-tag {
-    display: inline-block;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.9em;
-    text-transform: uppercase;
-}
 
 .incident-tag.bus-breakdown {
     background-color: #ff4444;
     color: white;
+    display: inline-block;   /* shrink-to-fit its contents */
+    width: auto;             /* let the browser size it to its text + padding */
+    /* or, if you need better cross-browser support: */
+    /* width: fit-content; */
+    /* width: -moz-fit-content; */
+    /* width: -webkit-fit-content; */
+    white-space: nowrap; 
 }
 
 .incident-tag.closure {
     background-color: #ff0000;
     color: white;
+    display: inline-block;   /* shrink-to-fit its contents */
+    width: auto;             /* let the browser size it to its text + padding */
+    /* or, if you need better cross-browser support: */
+    /* width: fit-content; */
+    /* width: -moz-fit-content; */
+    /* width: -webkit-fit-content; */
+    white-space: nowrap; 
 }
 
 .incident-tag.crash {
@@ -738,3 +744,54 @@ input:checked + .slider:before {
     font-size: 0.9em;
     color: #666;
 }
+
+    /* Incident Tag Base Styles */
+    /* Incident Tag Base Styles */
+    .incident-tag {
+        display: inline-block;
+        padding: 4px 12px; /* Keep some padding but let width adjust */
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.9em;
+        color: white;
+        text-transform: uppercase;
+        margin: 8px 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        white-space: nowrap; /* Prevent text from wrapping */
+        min-width: min-content; /* Ensure tag is at least as wide as its content */
+    }
+
+    /* Specific Incident Type Colors */
+    .road-crash-tag {
+        background-color: #dc3545; /* Red */
+        border: 1px solid #c82333;
+    }
+
+    .road-closure-tag {
+        background-color: #ffc107; /* Yellow */
+        color: #212529;
+        border: 1px solid #e0a800;
+    }
+
+    .bus-breakdown-tag {
+        background-color: #fd7e14; /* Orange */
+        border: 1px solid #e36209;
+    }
+
+    .traffic-tag {
+        background-color: #6f42c1; /* Purple/Brown */
+        border: 1px solid #5a32a3;
+    }
+
+    .weather-tag {
+        background-color: #0d6efd; /* Blue */
+        border: 1px solid #0b5ed7;
+    }
+
+    /* Optional hover effects */
+    .incident-tag:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: all 0.2s ease;
+    }

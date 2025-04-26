@@ -117,27 +117,28 @@ async function showDashboard() {
         });
 
         const incidentItem = `
-            <li class="update-item">
-                <div class="incident-header">
-                    <h4 class="incident-description">${incident.description}</h4>
-                    <div class="incident-timing">
-                        Reported ${formattedTime}, EST TIME: ${incident.estimatedDelay} MINS
-                    </div>
-                    <div class="incident-status">Status: ${incident.status}</div>
-                    <div class="incident-location">${incident.location}</div>
-                </div>
-                <div class="incident-tag ${incident.type.toLowerCase()}-tag">
-                    ${incident.type.toUpperCase().replace('-', ' ')}
-                </div>
-                <div class="affected-buses">
-                    <div class="label">Affected Buses:</div>
-                    <div class="bus-tags">
-                        ${incident.affectedBuses.map(bus => 
-                            `<span class="bus-tag">${bus}</span>`
-                        ).join('')}
-                    </div>
-                </div>
-            </li>
+<li class="update-item">
+    <div class="incident-header">
+        <h4 class="incident-description">${incident.description}</h4>
+        <div class="incident-timing">
+            <div><strong>Reported:</strong> ${formattedTime}</div>
+            <div><strong>EST Time:</strong> ${incident.estimatedDelay} MINS</div>
+            <div><strong>Location:</strong> ${incident.location}</div>
+        </div>
+        <div class="incident-status"><strong>Status:</strong> ${incident.status}</div>
+    </div>
+    <div class="incident-tag ${incident.type.toLowerCase()}-tag">
+        ${incident.type.toUpperCase().replace(/-/g, ' ')}
+    </div>
+    <div class="affected-buses">
+        <div class="label"><strong>Affected Buses:</strong></div>
+        <div class="bus-tags">
+            ${incident.affectedBuses.map(bus => 
+                `<span class="bus-tag">${bus}</span>`
+            ).join('')}
+        </div>
+    </div>
+</li>
         `;
         updatesList.innerHTML += incidentItem;
     });
