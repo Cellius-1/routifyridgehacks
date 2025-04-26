@@ -13,21 +13,23 @@
 
 <body onload="showDashboard()">
     <div class="dashboard-topbar d-flex align-items-center p-3">
-        <img src="brlogo.jpg" alt="BR Logo" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
-        <span class="district-name" style="font-size: 1.2em;">Bridgewater-Raritan Regional School District</span>
+        <img src="brlogo.jpg" alt="BR Logo" style="width:40px;height:40px;border-radius:50%;margin-right:10px;">
+        <span class="district-name" style="font-size:1.2em;">Bridgewater-Raritan Regional School District</span>
         <div class="profile-info ms-auto d-flex align-items-center" onclick="toggleDropdown()">
-            <img src="appa.png" alt="Profile Picture" class="me-2">
-            <span class="username">User</span>
-            <span class="dropdown-arrow ms-1">&#9662;</span>
-            <div class="profile-dropdown">
-                <a href="#">Profile</a>
-                <a href="#">Settings</a>
-                <a href="#">Logout</a>
-            </div>
+          <img src="appa.png" alt="Profile Picture" class="me-2">
+          <span class="username">User</span>
+          <span class="dropdown-arrow ms-1">&#9662;</span>
+          <div class="profile-dropdown">
+            <a href="#">Profile</a>
+            <!-- Now goes to our new settings page -->
+            <a href="settings.html">Settings</a>
+            <a href="#">Logout</a>
+          </div>
         </div>
-    </div>
+      </div>
 
     <div class="container mt-3">
+        <!-- Tharun’s card (unchanged) -->
         <div class="child-card p-3 mb-3 d-flex justify-content-between align-items-center">
             <div class="child-info d-flex align-items-center">
                 <img src="tharun.png" alt="Profile Picture" class="profile-pic me-3">
@@ -43,18 +45,19 @@
         </div>
         <div id="map1" class="child-map" style="display:none; height: 300px;"></div>
         <div id="driver1" class="driver-card" style="display:none;"></div>
-        
+
+        <!-- Thulasi’s card (onclick now passes her coords) -->
         <div class="child-card p-3 mb-3 d-flex justify-content-between align-items-center">
             <div class="child-info d-flex align-items-center">
-                <img src="tharun.png" alt="Profile Picture" class="profile-pic me-3">
+                <img src="thulasi.png" alt="Profile Picture" class="profile-pic me-3">
                 <div>
                     <div class="child-name">Thulasi N.</div>
                     <div class="bus-info">V09</div>
                 </div>
             </div>
-        
             <div class="status-box status-ontime">ON TIME</div>
-            <div class="view-map-icon" onclick="toggleMap('map2', 'driver2')">
+            <div class="view-map-icon"
+                 onclick="toggleMap('map2','driver2',40.59100310408912,-74.67250902140219)">
                 <i class="fas fa-map-marker-alt"></i>
             </div>
         </div>
@@ -62,14 +65,14 @@
         <div id="driver2" class="driver-card" style="display:none;"></div>
     </div>
 
+
     <div class="container">
         <div class="bus-status-header">
             <div class="form-select-container">
                 <label for="school-select"><strong>School:</strong></label>
                 <select id="school-select" class="form-select form-select-sm" onchange="showDashboard()">
                     <option value="vanholten"selected>Van Holten Primary School</option>
-                    <option value="milltown">Milltown Primary School</option>  
-                    <option value="eisenhower">Eisenhower Intermediate School</option>
+                    <option value="milltown">Milltown Primary School</option>                
                 </select>
             </div>
             
@@ -132,68 +135,6 @@
                 <tr>
                     <td>M04</td>
                     <td class="status-ontime">ON TIME</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <table id="eisenhower" class="bus-status-table mt-2">
-            <thead>
-                <tr>
-                    <th>Bus Number</th>
-                    <th>Status</th>
-                    <th>View Map</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>E01</td>
-                    <td class="status-ontime">ON TIME</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>E02</td>
-                    <td class="status-ontime">ON TIME</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>E03</td>
-                    <td class="status-ontime">ON TIME</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>E04</td>
-                    <td class="status-ontime">ON TIME</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>E05</td>
-                    <td class="status-delayed">DELAYED - 2 MIN</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>E06</td>
-                    <td class="status-ontime">ON TIME</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>E07</td>
-                    <td class="status-cancelled">CANCELLED</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>E08</td>
-                    <td class="status-ontime">ON TIME</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>E09</td>
-                    <td class="status-delayed">DELAYED - 5 MIN</td>
-                    <td><i class="fas fa-map-marker-alt"></i></td>
-                </tr>
-                <tr>
-                    <td>E10</td>
-                    <td class="status-delayed">DELAYED - 10 MIN</td>
                     <td><i class="fas fa-map-marker-alt"></i></td>
                 </tr>
             </tbody>
@@ -429,6 +370,8 @@
 
 </script>
         <script src="dashboard.js"></script>
+        <script src="map.js"></script>
+
 
     <button onclick="toggleMap('mapContainer', 'driverCard')" class="btn btn-primary mt-3">Show Bus Route</button>
 
