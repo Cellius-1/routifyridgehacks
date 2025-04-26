@@ -367,6 +367,75 @@
 </script>
         <script src="dashboard.js"></script>
 
+    <button onclick="toggleMap('mapContainer', 'driverCard')" class="btn btn-primary mt-3">Show Bus Route</button>
+
+    <div id="mapContainer" style="display: none; height: 400px;"></div>
+    <div id="driverCard" style="display: none;"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        let map;
+
+        function toggleMap(mapId, driverId) {
+            const mapContainer = document.getElementById(mapId);
+            const driverCard = document.getElementById(driverId);
+
+            if (mapContainer.style.display === "none") {
+                mapContainer.style.display = "block";
+                driverCard.style.display = "block";
+
+                if (!map) {
+                    map = L.map(mapId).setView([40.585417, -74.632778], 15); // Center near Miltown Elementary
+
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+
+                    const busIcon = L.icon({
+                        iconUrl: 'bus-marker.png',
+                        iconSize: [32, 37],
+                        iconAnchor: [16, 37],
+                    });
+
+                  
+                    const routeCoordinates = [
+                        [40.585417, -74.632778],
+                        [40.584900, -74.630500],
+                        [40.585200, -74.628300],
+                        [40.586200, -74.626500],
+                        [40.587000, -74.624000],
+                    ];
+
+                    
+                    const route = L.polyline(routeCoordinates, { color: 'blue' }).addTo(map);
+
+                    
+                    L.marker(routeCoordinates[0], { icon: busIcon }).addTo(map)
+                        .bindPopup('Bus starting point')
+                        .openPopup();
+                }
+
+                driverCard.innerHTML = `
+                    <div class="driver-card card mt-3">
+                        <div class="card-body d-flex align-items-center">
+                            <img src="default-profile.jpg" alt="Driver Profile Picture" class="driver-profile-pic me-3">
+                            <div>
+                                <div class="driver-name">Tharun N.</div>
+                                <div class="text-muted">Last updated: 42 seconds ago</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                mapContainer.style.display = "none";
+                driverCard.style.display = "none";
+            }
+        }
+    </script>
+
+
+
 </body>
 
 </html>
