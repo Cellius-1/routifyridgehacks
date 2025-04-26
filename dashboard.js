@@ -17,7 +17,7 @@ function showDashboard() {
     var vanholtenTable = document.getElementById('vanholten-table');
     var milltownTable = document.getElementById('milltown-table');
 
-    if (schoolDisplayed == 'vanholten') {
+    if (schoolDisplayed == "vanholten") {
         vanholtenTable.style.display = 'table';
         milltownTable.style.display = 'none';
     } else {
