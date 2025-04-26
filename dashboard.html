@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Route Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+    <div class="dashboard-topbar d-flex align-items-center p-3">
+        <img src="brlogo.jpg" alt="BR Logo" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px;">
+        <span class="district-name" style="font-size: 1.2em;">Bridgewater-Raritan Regional School District</span>
+        <div class="profile-info ms-auto d-flex align-items-center" onclick="toggleDropdown()">
+            <img src="appa.png" alt="Profile Picture" class="me-2">
+            <span class="username">User</span>
+            <span class="dropdown-arrow ms-1">&#9662;</span>
+            <div class="profile-dropdown">
+                <a href="#">Profile</a>
+                <a href="#">Settings</a>
+                <a href="#">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="child-card p-3 mb-3 d-flex justify-content-between align-items-center">
+            <div class="child-info d-flex align-items-center">
+                <img src="tharun.png" alt="Profile Picture" class="profile-pic me-3">
+                <div>
+                    <div class="child-name">Tharun N.</div>
+                    <div class="bus-info">R49</div>
+                </div>
+            </div>
+            <div class="status-box status-delayed">3 MIN DELAY</div>
+            <div class="view-map-icon" onclick="toggleMap('map1', 'driver1')">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+        </div>
+        <div id="map1" class="child-map" style="display:none; height: 300px;"></div>
+        <div id="driver1" class="driver-card" style="display:none;"></div>
+        
+        <div class="child-card p-3 mb-3 d-flex justify-content-between align-items-center">
+            <div class="child-info d-flex align-items-center">
+                <img src="tharun.png" alt="Profile Picture" class="profile-pic me-3">
+                <div>
+                    <div class="child-name">Thulasi N.</div>
+                    <div class="bus-info">V09</div>
+                </div>
+            </div>
+        
+            <div class="status-box status-ontime">ON TIME</div>
+            <div class="view-map-icon" onclick="toggleMap('map2', 'driver2')">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+        </div>
+        <div id="map2" class="child-map" style="display:none; height: 300px;"></div>
+        <div id="driver2" class="driver-card" style="display:none;"></div>
+    </div>
+
+    <div class="container">
+        <div class="bus-status-header">
+            <div class="form-select-container">
+                <label for="school-select"><strong>School:</strong></label>
+                <select id="school-select" class="form-select form-select-sm">
+                    <option selected>Van Holten Primary School</option>
+                    <option>Milltown Primary School</option>                
+                </select>
+            </div>
+            
+        </div>
+        <table class="bus-status-table mt-2">
+            <thead>
+                <tr>
+                    <th>Bus Number</th>
+                    <th>Status</th>
+                    <th>View Map</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>V01</td>
+                    <td class="status-delayed">DELAYED - 5 MIN</td>
+                    <td><i class="fas fa-map-marker-alt"></i></td>
+                </tr>
+                <tr>
+                    <td>V02</td>
+                    <td class="status-ontime">ON TIME</td>
+                    <td><i class="fas fa-map-marker-alt"></i></td>
+                </tr>
+                <tr>
+                    <td>V03</td>
+                    <td class="status-delayed">DELAYED - 3 MIN</td>
+                    <td><i class="fas fa-map-marker-alt"></i></td>
+                </tr>
+                <tr>
+                    <td>V04</td>
+                    <td class="status-ontime">ON TIME</td>
+                    <td><i class="fas fa-map-marker-alt"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="toggle-container d-flex align-items-center">
+        <button class="toggle-btn" onclick="toggleDashboard()">
+            <span class="toggle-arrow">&#9662;</span>
+            <span class="toggle-text">Updates Dashboard</span>
+        </button>
+    </div>
+
+    <div id="update-dashboard" class="update-dashboard">
+        <h3>Update Dashboard</h3>
+        <ul class="update-list">
+            <li class="update-item">
+                <div class="update-info">
+                    <div class="update-message">RT-22 CLOSED</div>
+                    <div class="update-time">Reported 3:00 PM, EST TIME: <strong>8 HRS</strong></div>
+                    <div class="update-days">0 days ago</div>
+                </div>
+                <div class="update-type road-closure">CLOSURE</div>
+                <div class="affected-buses">
+                    <strong>Affected Buses:</strong>
+                    <div class="bus-tags">
+                        <div class="bus-tag">H13</div>
+                        <div class="bus-tag">A09</div>
+                    </div>
+                </div>
+            </li>
+            <li class="update-item">
+                <div class="update-info">
+                    <div class="update-message">VANDERVEER RD CRASH</div>
+                    <div class="update-time">Reported 9:42 PM, EST TIME: <strong>2 HRS</strong></div>
+                    <div class="update-days">2 days ago</div>
+                </div>
+                <div class="update-type crash">CRASH</div>
+                <div class="affected-buses">
+                    <strong>Affected Buses:</strong>
+                    <div class="bus-tags">
+                        <div class="bus-tag">M01</div>
+                        <div class="bus-tag">M02</div>
+                        <div class="bus-tag">M03</div>
+                        <div class="bus-tag">H14</div>
+                        <div class="bus-tag">E06</div>
+                        <div class="bus-tag">R42</div>
+                    </div>
+                </div>
+            </li>
+            <li class="update-item">
+                <div class="update-info">
+                    <div class="update-message">RT-28 PAVING</div>
+                    <div class="update-time">Reported 8:42 AM, EST TIME: <strong>18 HRS</strong></div>
+                    <div class="update-days">1 week ago</div>
+                </div>
+                <div class="update-type construction">WORK</div>
+                <div class="affected-buses">
+                    <strong>Affected Buses:</strong>
+                    <div class="bus-tags">
+                        <div class="bus-tag">V03</div>
+                        <div class="bus-tag">M13</div>
+                        <div class="bus-tag">H02</div>
+                        <div class="bus-tag">E01</div>
+                        <div class="bus-tag">R23</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="notification-settings mt-3 p-3">
+        <h3><strong>Notification Settings</strong></h3>
+        <div class="notification-toggle">
+            <i class="fas fa-bell"></i>
+            <label class="switch">
+                <input type="checkbox" id="notification-toggle">
+                <span class="slider round"></span>
+            </label>
+            <span id="notification-status">Notifications: <strong>Off</strong></span>
+        </div>
+        <div class="notification-options mt-2">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="arrival-home">
+                <label class="form-check-label" for="arrival-home">Notify when student arrives home</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="reaches-school">
+                <label class="form-check-label" for="reaches-school">Notify when student reaches school</label>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div id="notification-popup" class="notification-popup">
+        <i class="fas fa-exclamation-circle"></i>
+        Notifications enabled!
+    </div>
+<div class="refresh-container">
+    <button class="refresh-btn">
+        <i class="fas fa-sync-alt"></i> Refresh
+    </button>
+</div>
+
+    <div class="logout-container mt-4">
+        <a href="login.html" class="btn logout-btn">Logout</a>
+    </div>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        function toggleMap(mapId, driverId) {
+            const mapContainer = document.getElementById(mapId);
+            const driverCard = document.getElementById(driverId);
+            if (mapContainer.style.display === "none") {
+                mapContainer.style.display = "block";
+                driverCard.style.display = "block";
+
+                const map = L.map(mapId).setView([40.585417, -74.632778], 13);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                const busIcon = L.icon({
+                    iconUrl: 'bus-marker.png', 
+                    iconSize: [32, 37], 
+                    iconAnchor: [16, 37],
+                });
+
+                L.marker([40.585417, -74.632778], { icon: busIcon }).addTo(map)
+                    .openPopup();
+
+                driverCard.innerHTML = `
+                    <div class="driver-card card mt-3">
+                        <div class="card-body d-flex align-items-center">
+                            <img src="default-profile.jpg" alt="Driver Profile Picture" class="driver-profile-pic me-3">
+                            <div>
+                                <div class="driver-name">Tharun N.</div>
+                                <div class="text-muted">Last updated: 42 seconds ago</div>
+                            </div>
+                        </div>
+                    </div>`;
+            } else {
+                mapContainer.style.display = "none";
+                driverCard.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        document.querySelectorAll('.bus-status-table tbody tr').forEach(row => {
+            row.addEventListener('click', function () {
+                const table = document.querySelector('.bus-status-table');
+                if (table.classList.contains('expanded')) {
+                    table.classList.remove('expanded');
+                    table.style.maxHeight = '300px';
+                } else {
+                    table.classList.add('expanded');
+                    table.style.maxHeight = 'none';
+                }
+            });
+        });
+    </script>
+    <script>
+                const table = document.querySelector('.bus-status-table');
+        const closeBtn = document.querySelector('.close-btn');
+
+        table.addEventListener('click', function () {
+            if (!table.classList.contains('table-expanded')) {
+                table.classList.add('table-expanded');
+                closeBtn.style.display = 'block';
+            }
+        });
+
+        closeBtn.addEventListener('click', function () {
+            table.classList.remove('table-expanded');
+            closeBtn.style.display = 'none';
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const rows = document.querySelectorAll('.bus-status-table tbody tr');
+            rows.forEach(row => {
+                const statusCell = row.querySelector('td:nth-child(2) span');
+                const isDelayed = Math.random() > 0.5;
+                if (isDelayed) {
+                    const delayMinutes = Math.floor(Math.random() * 30) + 1;  
+                    statusCell.className = 'status-delayed';
+                    statusCell.textContent = `${delayMinutes} MIN DELAY`;
+                } else {
+                    statusCell.className = 'status-ontime';
+                    statusCell.textContent = 'ON TIME';
+                }
+            });
+        });
+    </script>    
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const status = document.getElementById('notification-status');
+    const toggle = document.getElementById('notification-toggle');
+    const popup = document.getElementById('notification-popup');
+
+    status.innerHTML = 'Notifications: <strong>Off</strong>';
+    popup.style.display = 'none'; 
+    toggle.addEventListener('change', function () {
+        if (this.checked) {
+            status.innerHTML = 'Notifications: <strong>On</strong>';
+            showPopup();
+        } else {
+            status.innerHTML = 'Notifications: <strong>Off</strong>';
+        }
+    });
+
+    function showPopup() {
+        popup.style.display = 'block';
+        setTimeout(() => {
+            popup.style.display = 'none';
+        }, 3000); 
+    }
+});
+
+</script>
+<script>
+    function refreshPage() {
+    const btn = document.querySelector('.refresh-btn');
+    btn.classList.add('animate');
+    }
+    setTimeout(() => {
+        location.reload();
+    }, 1000); 
+
+</script>
+        <script src="dashboard.js"></script>
+
+</body>
+
+</html>
