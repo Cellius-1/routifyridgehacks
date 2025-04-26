@@ -1,8 +1,6 @@
 # Routify
 
-Devpost:
-
-## An application that allows parents/students to access bus information from school districts.
+An application that allows parents/students to access bus information from school districts.
 
 This project is made for RidgeHacks 2025 by **Tharun Naguleswaran, Dhruv Rakhade, Anshuman Roy, and Shubham Roy-Choudhury**
 
