@@ -13,9 +13,9 @@ function toggleDashboard() {
 
 
 function showDashboard() {
-    var schoolDisplayed = documnt.getElementById('school-select').value;
-    var vanholtenTable = document.getElementById('vanholten-table');
-    var milltownTable = document.getElementById('milltown-table');
+    var schoolDisplayed = document.getElementById('school-select').value;
+    var vanholtenTable = document.getElementById('vanholten');
+    var milltownTable = document.getElementById('milltown');
 
     vanholtenTable.style.display = 'table';
     milltownTable.style.display = 'none'
