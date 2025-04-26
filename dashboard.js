@@ -12,3 +12,12 @@ function toggleDashboard() {
 }
 
 
+const schoolElement = document.getElementById('school-select');
+const displayDiv = document.getElementById('selected-school');
+
+selectElement.addEventListener('change', function() {
+  console.log(this.value);
+});
+
+
+
