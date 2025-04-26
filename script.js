@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Navigation between forms
     document.getElementById('show-signup').addEventListener('click', () => {
         document.getElementById('login-container').classList.add('d-none');
         document.getElementById('signup-container-step1').classList.remove('d-none');
@@ -10,16 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('login-container').classList.remove('d-none');
     });
 
-    // District code validation
     const districtCodeInput = document.getElementById('district-code');
     const nextStepButton = document.getElementById('next-step');
 
     districtCodeInput.addEventListener('input', () => {
-        nextStepButton.disabled = districtCodeInput.value.length !== 6; // Changed from 4 to 6
+        nextStepButton.disabled = districtCodeInput.value.length !== 6; 
     });
 
     nextStepButton.addEventListener('click', () => {
-        if (districtCodeInput.value.length === 6) { // Changed from 4 to 6
+        if (districtCodeInput.value.length === 6) { 
             document.getElementById('signup-container-step1').classList.add('d-none');
             document.getElementById('signup-container-step2').classList.remove('d-none');
         } else {
@@ -27,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Parent/Student selection
     document.getElementById('parent-button').addEventListener('click', () => {
         document.getElementById('signup-container-step2').classList.add('d-none');
         document.getElementById('signup-container-parent').classList.remove('d-none');
@@ -38,10 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('signup-container-student').classList.remove('d-none');
     });
 
-    // Parent form validation
     const parentForm = document.getElementById('parent-form');
 
-    // Auto-uppercase for parent code
     document.getElementById('parent-code-reg').addEventListener('input', function() {
         this.value = this.value.toUpperCase();
     });
@@ -57,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const lastName = document.getElementById('last-name').value;
 
         if (validateParentForm()) {
-            // Show loading state
             const button = document.getElementById('complete-registration');
             button.disabled = true;
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Validating...';
@@ -68,36 +62,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('signup-container-parent').classList.add('d-none');
                 document.getElementById('verification-container').classList.remove('d-none');
                 
-                // Simulate verification process
                 setTimeout(() => {
                     document.getElementById('verification-complete').classList.remove('d-none');
                 }, 2000);
             } else {
-                // Show error message
                 const errorDiv = document.createElement('div');
                 errorDiv.className = 'alert alert-danger mt-3';
                 errorDiv.textContent = 'Invalid guardian information. Please check your details and try again.';
                 document.getElementById('parent-form').appendChild(errorDiv);
                 
-                // Reset button
                 button.disabled = false;
                 button.innerHTML = 'Complete Registration';
             }
         }
     });
 
-    // Continue to dashboard
     document.getElementById('continue-to-dashboard').addEventListener('click', () => {
         window.location.href = 'dashboard.html';
     });
 
-    // Form validation functions
     function validateParentFormInput(input) {
         const errorMessage = input.nextElementSibling;
         let isValid = true;
 
         if (input.id === 'parent-code-reg') {
-            if (input.value.length !== 6) { // Changed from 8 to 6
+            if (input.value.length !== 6) { 
                 isValid = false;
                 errorMessage.textContent = 'Parent code must be 6 digits.';
             } else {
@@ -162,16 +151,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return isValid;
     }
 
-    // Student registration
     const parentCodeInput = document.getElementById('parent-code');
     const nextStepStudentButton = document.getElementById('next-step-student');
 
     parentCodeInput.addEventListener('input', () => {
-        nextStepStudentButton.disabled = parentCodeInput.value.length !== 6; // Changed from 8 to 6
+        nextStepStudentButton.disabled = parentCodeInput.value.length !== 6; 
     });
 
     nextStepStudentButton.addEventListener('click', () => {
-        if (parentCodeInput.value.length === 6) { // Changed from 8 to 6
+        if (parentCodeInput.value.length === 6) { 
             document.getElementById('signup-container-student').classList.add('d-none');
             document.getElementById('welcome-screen').classList.remove('d-none');
         } else {
@@ -181,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Back buttons
     document.getElementById('go-back-step2').addEventListener('click', () => {
         document.getElementById('signup-container-parent').classList.add('d-none');
         document.getElementById('signup-container-step2').classList.remove('d-none');
@@ -192,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('signup-container-step2').classList.remove('d-none');
     });
 
-    // Add child flow
     document.getElementById('add-child').addEventListener('click', () => {
         document.getElementById('welcome-screen').classList.add('d-none');
         document.getElementById('add-child-screen').classList.remove('d-none');
@@ -221,18 +207,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Add this function to fetch and validate guardian data
 async function validateGuardianData(parentCode, firstName, lastName) {
     try {
         const response = await fetch('https://voltschool.vercel.app/api/students?code=572394');
         const students = await response.json();
         
-        // For debugging
         console.log('Parent Code:', parentCode);
         console.log('Name to match:', `${firstName} ${lastName}`);
         console.log('API Data:', students);
         
-        // Find any student whose guardian matches the provided details
         const match = students.find(student => {
             const guardianCodeMatch = student.guardian.guardianCode === parentCode;
             const guardianNameMatch = student.guardian.name.toLowerCase() === `${firstName} ${lastName}`.toLowerCase();
