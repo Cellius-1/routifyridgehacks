@@ -30,7 +30,7 @@ function showDashboard() {
         vanholtenTable.style.display = 'none';
         milltownTable.style.display = 'table';
         eisenhowerTable.style.display = 'none';   
-    }  else if (schoolDisplayed == "milltown") {
+    }  else if (schoolDisplayed == "eisenhower") {
         vanholtenTable.style.display = 'none';
         milltownTable.style.display = 'none';
         eisenhowerTable.style.display = 'table';  
