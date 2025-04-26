@@ -45,13 +45,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('complete-registration').addEventListener('click', () => {
         if (validateParentForm()) {
             document.getElementById('signup-container-parent').classList.add('d-none');
-            document.getElementById('success-popup').classList.remove('d-none');
-
+            document.getElementById('verification-container').classList.remove('d-none');
+            
+            // Simulate verification process (2 seconds)
             setTimeout(() => {
-                document.getElementById('success-popup').classList.add('d-none');
-                document.getElementById('login-container').classList.remove('d-none');
-            }, 3000);
+                document.getElementById('verification-complete').classList.remove('d-none');
+            }, 2000);
         }
+    });
+
+    document.getElementById('continue-to-dashboard').addEventListener('click', () => {
+        window.location.href = 'dashboard.html';
     });
 
     function validateParentFormInput(input) {

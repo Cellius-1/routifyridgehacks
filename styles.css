@@ -177,3 +177,32 @@ h5 {
     color: #6c757d;
     border: 2px solid #6c757d;
 }
+
+.verification-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+}
+
+.verification-content {
+    background-color: #FFCC00;
+    color: #000;
+    padding: 20px 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.verification-popup.d-none {
+    display: none;
+}
