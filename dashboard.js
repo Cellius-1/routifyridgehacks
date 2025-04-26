@@ -12,12 +12,17 @@ function toggleDashboard() {
 }
 
 
-const schoolElement = document.getElementById('school-select');
-const displayDiv = document.getElementById('selected-school');
+function showDashboard() {
+    var schoolDisplayed = documnt.getElementById('school-select').value;
+    var vanholtenTable = document.getElementById('vanholten-table');
+    var milltownTable = document.getElementById('milltown-table');
 
-selectElement.addEventListener('change', function() {
-  console.log(this.value);
-});
-
-
+    if (schoolDisplayed == 'vanholten') {
+        vanholtenTable.style.display = 'table';
+        milltownTable.style.display = 'none';
+    } else {
+        vanholtenTable.style.display = 'none';
+        milltownTable.style.display = 'table';
+    }
+}
 
