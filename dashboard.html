@@ -29,183 +29,27 @@
       </div>
 
     <div class="container mt-3">
-        <!-- Tharun’s card (unchanged) -->
-        <div class="child-card p-3 mb-3 d-flex justify-content-between align-items-center">
-            <div class="child-info d-flex align-items-center">
-                <img src="tharun.png" alt="Profile Picture" class="profile-pic me-3">
-                <div>
-                    <div class="child-name">Tharun N.</div>
-                    <div class="bus-info">R49</div>
-                </div>
-            </div>
-            <div class="status-box status-delayed">3 MIN DELAY</div>
-            <div class="view-map-icon" onclick="toggleMap('map1', 'driver1')">
-                <i class="fas fa-map-marker-alt"></i>
-            </div>
-        </div>
-        <div id="map1" class="child-map" style="display:none; height: 300px;"></div>
-        <div id="driver1" class="driver-card" style="display:none;"></div>
-
-        <!-- Thulasi’s card (onclick now passes her coords) -->
-        <div class="child-card p-3 mb-3 d-flex justify-content-between align-items-center">
-            <div class="child-info d-flex align-items-center">
-                <img src="tharun.png" alt="Profile Picture" class="profile-pic me-3">
-                <div>
-                    <div class="child-name">Thulasi N.</div>
-                    <div class="bus-info">V09</div>
-                </div>
-            </div>
-            <div class="status-box status-ontime">ON TIME</div>
-            <div class="view-map-icon"
-                 onclick="toggleMap('map2','driver2',40.59100310408912,-74.67250902140219)">
-                <i class="fas fa-map-marker-alt"></i>
-            </div>
-        </div>
-        <div id="map2" class="child-map" style="display:none; height: 300px;"></div>
-        <div id="driver2" class="driver-card" style="display:none;"></div>
+        <!-- Student cards will be populated dynamically -->
     </div>
-
 
     <div class="container">
         <div class="bus-status-header">
-          <div class="form-select-container">
-            <label for="school-select"><strong>School:</strong></label>
-            <select id="school-select" class="form-select form-select-sm" onchange="showDashboard()">
-              <option value="vanholten" selected>Van Holten Primary School</option>
-              <option value="milltown">Milltown Primary School</option>
-            </select>
-          </div>
+            <h4>Bus Status</h4>
         </div>
-      
-        <!-- Van Holten Table -->
-        <table id="vanholten" class="bus-status-table mt-2">
-          <thead>
-            <tr>
-              <th>Bus Number</th>
-              <th>Status</th>
-              <th>Driver</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>V01</td>
-              <td><span class="status-tag delayed">DELAYED - 5 MIN</span></td>
-              <td><span class="driver-tag">Mr. José García</span></td>
-            </tr>
-            <tr>
-              <td>V02</td>
-              <td><span class="status-tag cancelled">CANCELLED</span></td>
-              <td><span class="driver-tag">Ms. Latoya Johnson</span></td>
-            </tr>
-            <tr>
-              <td>V03</td>
-              <td><span class="status-tag delayed">DELAYED - 3 MIN</span></td>
-              <td><span class="driver-tag">Mr. Carlos Hernández</span></td>
-            </tr>
-            <tr>
-              <td>V04</td>
-              <td><span class="status-tag ontime">ON TIME</span></td>
-              <td><span class="driver-tag">Ms. Angela Davis</span></td>
-            </tr>
-          </tbody>
+        
+        <table id="busTable" class="bus-status-table mt-2">
+            <thead>
+                <tr>
+                    <th>Bus Number</th>
+                    <th>Status</th>
+                    <th>Driver</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Bus data will be populated dynamically -->
+            </tbody>
         </table>
-      
-        <!-- Milltown Table -->
-        <table id="milltown" class="bus-status-table mt-2">
-          <thead>
-            <tr>
-              <th>Bus Number</th>
-              <th>Status</th>
-              <th>Driver</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>M01</td>
-              <td><span class="status-tag cancelled">CANCELLED</span></td>
-              <td><span class="driver-tag">Mr. Kwame Mensah</span></td>
-            </tr>
-            <tr>
-              <td>M02</td>
-              <td><span class="status-tag delayed">DELAYED - 20 MIN</span></td>
-              <td><span class="driver-tag">Ms. Amina Abdi</span></td>
-            </tr>
-            <tr>
-              <td>M03</td>
-              <td><span class="status-tag cancelled">CANCELLED</span></td>
-              <td><span class="driver-tag">Mr. Darnell Jackson</span></td>
-            </tr>
-            <tr>                                                                                                        
-              <td>M04</td>
-              <td><span class="status-tag ontime">ON TIME</span></td>
-              <td><span class="driver-tag">Mrs. Nyasha Chikomo</span></td>
-            </tr>
-          </tbody>
-        </table>
-      
-        <!-- Eisenhower Table -->
-        <table id="eisenhower" class="bus-status-table mt-2">
-          <thead>
-            <tr>
-              <th>Bus Number</th>
-              <th>Status</th>
-              <th>Driver</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>E01</td>
-              <td><span class="status-tag ontime">ON TIME</span></td>
-              <td><span class="driver-tag">Mr. Diego Martínez</span></td>
-            </tr>
-            <tr>
-              <td>E02</td>
-              <td><span class="status-tag ontime">ON TIME</span></td>
-              <td><span class="driver-tag">Ms. Tasha Brown</span></td>
-            </tr>
-            <tr>
-              <td>E03</td>
-              <td><span class="status-tag ontime">ON TIME</span></td>
-              <td><span class="driver-tag">Mr. Rafael Torres</span></td>
-            </tr>
-            <tr>
-              <td>E04</td>
-              <td><span class="status-tag cancelled">CANCELLED</span></td>
-              <td><span class="driver-tag">Ms. Carmen Díaz</span></td>
-            </tr>
-            <tr>
-              <td>E05</td>
-              <td><span class="status-tag delayed">DELAYED - 2 MIN</span></td>
-              <td><span class="driver-tag">Mr. Kofi Adu</span></td>
-            </tr>
-            <tr>
-              <td>E06</td>
-              <td><span class="status-tag ontime">ON TIME</span></td>
-              <td><span class="driver-tag">Ms. Zuri Ndlovu</span></td>
-            </tr>
-            <tr>
-              <td>E07</td>
-              <td><span class="status-tag cancelled">CANCELLED</span></td>
-              <td><span class="driver-tag">Mr. Marcus Green</span></td>
-            </tr>
-            <tr>
-              <td>E08</td>
-              <td><span class="status-tag ontime">ON TIME</span></td>
-              <td><span class="driver-tag">Ms. Fatima Diallo</span></td>
-            </tr>
-            <tr>
-              <td>E09</td>
-              <td><span class="status-tag delayed">DELAYED - 5 MIN</span></td>
-              <td><span class="driver-tag">Mr. Samuel Nkosi</span></td>
-            </tr>
-            <tr>
-              <td>E10</td>
-              <td><span class="status-tag delayed">DELAYED - 10 MIN</span></td>
-              <td><span class="driver-tag">Mrs. Estela Morales</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    </div>
       
     <div class="toggle-container d-flex align-items-center">
         <button class="toggle-btn" onclick="toggleDashboard()">
@@ -217,58 +61,7 @@
     <div id="update-dashboard" class="update-dashboard">
         <h3>Update Dashboard</h3>
         <ul class="update-list">
-            <li class="update-item">
-                <div class="update-info">
-                    <div class="update-message">RT-22 CLOSED</div>
-                    <div class="update-time">Reported 3:00 PM, EST TIME: <strong>8 HRS</strong></div>
-                    <div class="update-days">0 days ago</div>
-                </div>
-                <div class="update-type road-closure">CLOSURE</div>
-                <div class="affected-buses">
-                    <strong>Affected Buses:</strong>
-                    <div class="bus-tags">
-                        <div class="bus-tag">H13</div>
-                        <div class="bus-tag">A09</div>
-                    </div>
-                </div>
-            </li>
-            <li class="update-item">
-                <div class="update-info">
-                    <div class="update-message">VANDERVEER RD CRASH</div>
-                    <div class="update-time">Reported 9:42 PM, EST TIME: <strong>2 HRS</strong></div>
-                    <div class="update-days">2 days ago</div>
-                </div>
-                <div class="update-type crash">CRASH</div>
-                <div class="affected-buses">
-                    <strong>Affected Buses:</strong>
-                    <div class="bus-tags">
-                        <div class="bus-tag">M01</div>
-                        <div class="bus-tag">M02</div>
-                        <div class="bus-tag">M03</div>
-                        <div class="bus-tag">H14</div>
-                        <div class="bus-tag">E06</div>
-                        <div class="bus-tag">R42</div>
-                    </div>
-                </div>
-            </li>
-            <li class="update-item">
-                <div class="update-info">
-                    <div class="update-message">RT-28 PAVING</div>
-                    <div class="update-time">Reported 8:42 AM, EST TIME: <strong>18 HRS</strong></div>
-                    <div class="update-days">1 week ago</div>
-                </div>
-                <div class="update-type construction">WORK</div>
-                <div class="affected-buses">
-                    <strong>Affected Buses:</strong>
-                    <div class="bus-tags">
-                        <div class="bus-tag">V03</div>
-                        <div class="bus-tag">M13</div>
-                        <div class="bus-tag">H02</div>
-                        <div class="bus-tag">E01</div>
-                        <div class="bus-tag">R23</div>
-                    </div>
-                </div>
-            </li>
+            <!-- Incidents will be populated dynamically -->
         </ul>
     </div>
 
@@ -385,6 +178,8 @@
 </script>
         <script src="dashboard.js"></script>
         <script src="map.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="dashboard.js"></script>
 
 
     <button onclick="toggleMap('mapContainer', 'driverCard')" class="btn btn-primary mt-3">Show Bus Route</button>

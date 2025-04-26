@@ -44,11 +44,11 @@
         <h3 class="fw-bold mb-4">Sign Up</h3>
         <form id="signup-form-step1">
             <div class="mb-4 text-center">
-                <label for="district-code" class="form-label">Enter the district code provided by your school.</label>
-                <input type="text" id="district-code" class="form-control text-uppercase" maxlength="4" required>
+                <label for="district-code" class="form-label">Enter the 6-digit district code provided by your school.</label>
+                <input type="text" id="district-code" class="form-control text-uppercase" maxlength="6" required>
             </div>
             <div class="text-center mb-4">
-                <a href="https://thernel.me" class="text-decoration-none" target="_blank">Can't find your code?</a>
+                <a href="https://voltschool.vercel.app" class="text-decoration-none" target="_blank">Can't find your code?</a>
             </div>
             <button type="button" id="next-step" class="btn btn-dark btn-block w-100" disabled>Next</button>
         </form>
@@ -79,8 +79,8 @@
         <h3 class="fw-bold mb-4">Parent Registration</h3>
         <form id="parent-form">
             <div class="mb-3 text-start">
-                <label for="parent-code-reg" class="form-label">Parent Code (8 digits)</label>
-                <input type="text" id="parent-code-reg" class="form-control text-uppercase" maxlength="8" required>
+                <label for="parent-code-reg" class="form-label">Parent Code (6 digits)</label>
+                <input type="text" id="parent-code-reg" class="form-control text-uppercase" maxlength="6" required>
                 <div class="error-message" id="parent-code-reg-error"></div>
             </div>
             <div class="mb-3 text-start">
@@ -118,8 +118,11 @@
                 <input type="tel" id="phone" class="form-control">
                 <div class="error-message" id="phone-error"></div>
             </div>
-            <button type="button" id="complete-registration" class="btn btn-dark btn-block w-100">Complete Registration</button>
+            <button type="button" id="complete-registration" class="btn btn-dark btn-block w-100">
+                Complete Registration
+            </button>
         </form>
+        <div id="registration-errors"></div>
         <div class="mt-4">
             <p class="signup-text">
                 <a href="#" id="go-back-step2" class="text-decoration-none">Back <span class="arrow">&larr;</span></a>
@@ -148,8 +151,8 @@
         <h3 class="fw-bold mb-4">Student Registration</h3>
         <form id="student-form">
             <div class="mb-4 text-start">
-                <label for="parent-code" class="form-label">Enter the 8-digit parent code.</label>
-                <input type="text" id="parent-code" class="form-control text-uppercase" maxlength="8" required>
+                <label for="parent-code" class="form-label">Enter the 6-digit parent code.</label>
+                <input type="text" id="parent-code" class="form-control text-uppercase" maxlength="6" required>
                 <div class="error-message" id="parent-code-error"></div>
             </div>
             <div class="text-center mb-4">

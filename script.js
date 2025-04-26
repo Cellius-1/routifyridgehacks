@@ -15,15 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextStepButton = document.getElementById('next-step');
 
     districtCodeInput.addEventListener('input', () => {
-        nextStepButton.disabled = districtCodeInput.value.length !== 4;
+        nextStepButton.disabled = districtCodeInput.value.length !== 6; // Changed from 4 to 6
     });
 
     nextStepButton.addEventListener('click', () => {
-        if (districtCodeInput.value.length === 4) {
+        if (districtCodeInput.value.length === 6) { // Changed from 4 to 6
             document.getElementById('signup-container-step1').classList.add('d-none');
             document.getElementById('signup-container-step2').classList.remove('d-none');
         } else {
-            console.log('District code must be exactly 4 characters.');
+            console.log('District code must be exactly 6 characters.');
         }
     });
 
@@ -51,15 +51,38 @@ document.addEventListener('DOMContentLoaded', () => {
         validateParentFormInput(target);
     });
 
-    document.getElementById('complete-registration').addEventListener('click', () => {
+    document.getElementById('complete-registration').addEventListener('click', async () => {
+        const parentCode = document.getElementById('parent-code-reg').value;
+        const firstName = document.getElementById('first-name').value;
+        const lastName = document.getElementById('last-name').value;
+
         if (validateParentForm()) {
-            document.getElementById('signup-container-parent').classList.add('d-none');
-            document.getElementById('verification-container').classList.remove('d-none');
-            
-            // Simulate verification process
-            setTimeout(() => {
-                document.getElementById('verification-complete').classList.remove('d-none');
-            }, 2000);
+            // Show loading state
+            const button = document.getElementById('complete-registration');
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Validating...';
+
+            const isValidGuardian = await validateGuardianData(parentCode, firstName, lastName);
+
+            if (isValidGuardian) {
+                document.getElementById('signup-container-parent').classList.add('d-none');
+                document.getElementById('verification-container').classList.remove('d-none');
+                
+                // Simulate verification process
+                setTimeout(() => {
+                    document.getElementById('verification-complete').classList.remove('d-none');
+                }, 2000);
+            } else {
+                // Show error message
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'alert alert-danger mt-3';
+                errorDiv.textContent = 'Invalid guardian information. Please check your details and try again.';
+                document.getElementById('parent-form').appendChild(errorDiv);
+                
+                // Reset button
+                button.disabled = false;
+                button.innerHTML = 'Complete Registration';
+            }
         }
     });
 
@@ -74,9 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let isValid = true;
 
         if (input.id === 'parent-code-reg') {
-            if (input.value.length !== 8) {
+            if (input.value.length !== 6) { // Changed from 8 to 6
                 isValid = false;
-                errorMessage.textContent = 'Parent code must be 8 digits.';
+                errorMessage.textContent = 'Parent code must be 6 digits.';
             } else {
                 errorMessage.textContent = '';
             }
@@ -144,11 +167,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextStepStudentButton = document.getElementById('next-step-student');
 
     parentCodeInput.addEventListener('input', () => {
-        nextStepStudentButton.disabled = parentCodeInput.value.length !== 8;
+        nextStepStudentButton.disabled = parentCodeInput.value.length !== 6; // Changed from 8 to 6
     });
 
     nextStepStudentButton.addEventListener('click', () => {
-        if (parentCodeInput.value.length === 8) {
+        if (parentCodeInput.value.length === 6) { // Changed from 8 to 6
             document.getElementById('signup-container-student').classList.add('d-none');
             document.getElementById('welcome-screen').classList.remove('d-none');
         } else {
@@ -197,3 +220,33 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'dashboard.html';
     });
 });
+
+// Add this function to fetch and validate guardian data
+async function validateGuardianData(parentCode, firstName, lastName) {
+    try {
+        const response = await fetch('https://voltschool.vercel.app/api/students?code=572394');
+        const students = await response.json();
+        
+        // For debugging
+        console.log('Parent Code:', parentCode);
+        console.log('Name to match:', `${firstName} ${lastName}`);
+        console.log('API Data:', students);
+        
+        // Find any student whose guardian matches the provided details
+        const match = students.find(student => {
+            const guardianCodeMatch = student.guardian.guardianCode === parentCode;
+            const guardianNameMatch = student.guardian.name.toLowerCase() === `${firstName} ${lastName}`.toLowerCase();
+            
+            console.log('Comparing:');
+            console.log('Guardian code:', student.guardian.guardianCode, 'vs', parentCode);
+            console.log('Guardian name:', student.guardian.name.toLowerCase(), 'vs', `${firstName} ${lastName}`.toLowerCase());
+            
+            return guardianCodeMatch && guardianNameMatch;
+        });
+        
+        return !!match;
+    } catch (error) {
+        console.error('Error validating guardian:', error);
+        return false;
+    }
+}
