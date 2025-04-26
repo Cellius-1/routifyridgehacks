@@ -11,7 +11,6 @@ function toggleDashboard() {
     }
 }
 
-// Add function to get parent's code from localStorage (set during login)
 function getParentCode() {
     return localStorage.getItem('parentCode') || '';
 }
@@ -57,15 +56,13 @@ async function getTimeSince(timestamp) {
     return `${diffDays} days ago`;
 }
 
-// Update the showDashboard function to use real data
 async function showDashboard() {
     const students = await fetchStudents();
     const buses = await fetchBuses();
     const incidents = await fetchIncidents();
 
-    // Populate student cards
     const container = document.querySelector('.container.mt-3');
-    container.innerHTML = ''; // Clear existing cards
+    container.innerHTML = ''; 
 
     students.forEach(student => {
         const studentCard = `
@@ -89,7 +86,6 @@ async function showDashboard() {
         container.innerHTML += studentCard;
     });
 
-    // Update bus status table
     const busTable = document.querySelector('#busTable tbody');
     busTable.innerHTML = '';
 
@@ -104,7 +100,6 @@ async function showDashboard() {
         busTable.innerHTML += busRow;
     });
 
-    // Update incidents in updates dashboard
     const updatesList = document.querySelector('.update-list');
     updatesList.innerHTML = '';
 
@@ -144,7 +139,6 @@ async function showDashboard() {
     });
 }
 
-// Helper functions
 function getBusStatus(busId, buses) {
     const bus = buses.find(b => b.id === busId);
     return bus?.status === 'active' ? 'status-ontime' : 'status-delayed';
