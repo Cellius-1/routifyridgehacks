@@ -283,6 +283,16 @@ body, html {
     color: #ffffff;
     text-align: center;
 }
+
+.bus-status-table .status-cancelled {
+    background-color: gray;
+    padding: 1px 5px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: #ffffff;
+    text-align: center;
+}
 .form-select-container {
     position: relative;
     display: inline-block; 
