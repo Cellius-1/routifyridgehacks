@@ -16,15 +16,23 @@ function showDashboard() {
     var schoolDisplayed = document.getElementById('school-select').value;
     var vanholtenTable = document.getElementById('vanholten');
     var milltownTable = document.getElementById('milltown');
+    var eisenhowerTable = document.getElementById('eisenhower');
 
     vanholtenTable.style.display = 'table';
-    milltownTable.style.display = 'none'
+    milltownTable.style.display = 'none';
+    eisenhowerTable.style.display = 'none';
     
     if (schoolDisplayed == "vanholten") {
         vanholtenTable.style.display = 'table';
         milltownTable.style.display = 'none';
-    } else {
+        eisenhowerTable.style.display = 'none';
+    } else if (schoolDisplayed == "milltown") {
         vanholtenTable.style.display = 'none';
         milltownTable.style.display = 'table';
-    }
+        eisenhowerTable.style.display = 'none';   
+    }  else if (schoolDisplayed == "milltown") {
+        vanholtenTable.style.display = 'none';
+        milltownTable.style.display = 'none';
+        eisenhowerTable.style.display = 'table';  
+}
 }
