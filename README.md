@@ -1,4 +1,4 @@
-# routifyridgehacks
+# Routify
 
 Devpost:
 
